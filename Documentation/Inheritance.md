@@ -4,6 +4,8 @@ Here you should describe how you have used Inheritance for Code Reuse in your so
 
 You should use class diagrams and code snippets where appropriate.
 
+// The consoleMenu class uses inheritance as it uses code from the Menu Item class.
+
 ```cs
 internal abstract class ConsoleMenu : MenuItem
 {
@@ -76,3 +78,4 @@ classDiagram
   class DerivedClass{
   }
 ```
+
