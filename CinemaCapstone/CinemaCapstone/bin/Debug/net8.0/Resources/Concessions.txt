@@ -1,0 +1,7 @@
+﻿//Concessions
+
+[Concession:Popcorn%Price:250]
+[Concession:Soda%Price:250]
+[Concession:Candy%Price:250]
+[Concession:Nachos%Price:250]
+
