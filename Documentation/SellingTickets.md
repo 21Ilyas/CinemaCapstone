@@ -37,6 +37,10 @@ internal class SelectTicketAndAddToTransactionMenu : ConsoleMenu
 }
 
 
+// This Concession menu allows the user to select concessions such as popcorn and soda and adds it to the current transaction.
+//This menu also allows the user to switch back to the tickets menu were tickets can be added in the same transaction.
+
+
 internal class SelectConcessionAndAddToTransactionMenu : ConsoleMenu
 {
     private IEnumerable<Concession> _concessions;
@@ -68,6 +72,16 @@ internal class SelectConcessionAndAddToTransactionMenu : ConsoleMenu
     }
     
 }
+Concession[] concessions = new Concession[]
+{
+    new Concession("Popcorn", 500),
+    new Concession("Soda", 300),
+    new Concession("Candy", 200),
+    new Concession("Nachos", 700)
+};
+
+// This screening menu allows the user to select screenings to films with specific times, screens and age rating.
+//Also the selected screening is added in the same transaction.
 
 internal class SelectScreeningMenu : ConsoleMenu
 {
@@ -106,7 +120,19 @@ internal class SelectScreeningMenu : ConsoleMenu
         return "Select a screening for the film";
     }
 }
+//Shows the film, length, age rating, date, time, screen, seats available
+Screening[] screenings = new Screening[]
+{
+    new Screening(new Film("Gladiator", 120, "18"), new DateTime(2025, 8, 23, 18, 0, 0), 2, 50),
+    new Screening(new Film("Iron Man", 150, "12"), new DateTime(2025, 8, 23, 20, 0, 0), 3, 30),
+    new Screening(new Film("Mufasa", 150, "U"), new DateTime(2025, 8, 23, 14, 0, 0), 4, 40),
+    new Screening(new Film("Maze Runner", 130, "15"), new DateTime(2025, 8, 24, 16, 0, 0), 5, 20),
+    new Screening(new Film("Holiday", 120, "12"), new DateTime(2025, 8, 24, 18, 0, 0), 6, 25)
+};
 
+
+
+// Calculatest the total price of the current transaction
 // Display transaction details
 public override string ToString()
 {
@@ -151,6 +177,24 @@ public override string ToString()
     return sb.ToString();
 }
 
+// This cinema class stores information about the cinema
+internal class Cinema
+{
+    // Represents information about the cinema, including the films, concessions, and tickets available.
+    public IEnumerable<Film> Films;
+    public IEnumerable<Concession> Concessions;
+    public IEnumerable<Ticket> Tickets;
+    private List<Transaction> _transactions;
+
+    public Cinema(IEnumerable<Film> films, IEnumerable<Concession> concessions, IEnumerable<Ticket> tickets)
+    {
+        Films = films;
+        Concessions = concessions;
+        Tickets = tickets;
+        _transactions = new List<Transaction>();
+    }
+}
+
 This workflow should do the following things:
 
 - Load information about the cinema without allowing invalid data
@@ -163,6 +207,7 @@ This workflow should do the following things:
 - Calculate the total price of the transaction
 - Demonstrate the number of tickets available has updated
 - Save updated information about screenings
+
 
 
 
